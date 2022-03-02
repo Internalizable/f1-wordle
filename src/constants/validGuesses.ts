@@ -13160,5 +13160,9 @@ export const VALID_GUESSES = [
   'abbey',
   'diniz',
   'newey',
-  'rosso'
+  'rosso',
+  'bwoah',
+  'sutil',
+  'buemi',
+  'multi'
 ]

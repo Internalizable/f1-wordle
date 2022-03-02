@@ -76,22 +76,28 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           </a>.
       </p>
         <p className="mt-1.5 italic text-sm text-gray-500 dark:text-gray-300">
-            Maintained by {' '}
+            Special thanks to {' '}
             <a
                 href="https://twitter.com/NaturalParadigm/"
                 className="underline font-bold"
             >
                 Bryson
-            </a>
-            {' '}
-            and
+            </a>,
+
             {' '}
             <a
                 href="https://twitter.com/F1Ally/"
                 className="underline font-bold"
             >
                 Ally
-            </a>.
+            </a>, and
+            {' '}
+            <a
+                href="https://twitter.com/ragnhiId/"
+                className="underline font-bold"
+            >
+                Ragnhild
+            </a>{' '} for continuously updating the words list.
         </p>
     </BaseModal>
   )

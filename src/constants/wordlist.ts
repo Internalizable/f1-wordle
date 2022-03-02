@@ -188,6 +188,10 @@ export const WORDS = [
     'abbey',
     'diniz',
     'newey',
-    'rosso'
+    'rosso',
+    'bwoah',
+    'sutil',
+    'buemi',
+    'multi'
 ]
 
