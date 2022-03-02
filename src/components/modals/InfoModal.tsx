@@ -61,7 +61,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         Forked by {' '}
           <a
               href="https://twitter.com/CharSequence/"
-              className="underline"
+              className="underline font-bold"
           >
               Elie
           </a>
@@ -75,7 +75,24 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
               github
           </a>.
       </p>
-
+        <p className="mt-1.5 italic text-sm text-gray-500 dark:text-gray-300">
+            Maintained by {' '}
+            <a
+                href="https://twitter.com/NaturalParadigm/"
+                className="underline font-bold"
+            >
+                Bryson
+            </a>
+            {' '}
+            and
+            {' '}
+            <a
+                href="https://twitter.com/F1Ally/"
+                className="underline font-bold"
+            >
+                Ally
+            </a>.
+        </p>
     </BaseModal>
   )
 }
