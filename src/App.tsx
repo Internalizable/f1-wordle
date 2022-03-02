@@ -28,7 +28,6 @@ import {
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
-  clearLocalStorage,
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
   setStoredIsHighContrastMode,

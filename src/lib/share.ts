@@ -3,19 +3,32 @@ import { solutionIndex } from './words'
 import { GAME_TITLE } from '../constants/strings'
 import { MAX_CHALLENGES } from '../constants/settings'
 
-export const shareStatus = (
+export const shareStatus = async (
   guesses: string[],
   lost: boolean,
   isHardMode: boolean,
   isDarkMode: boolean,
   isHighContrastMode: boolean
-) => {
-  navigator.clipboard.writeText(
-    `${GAME_TITLE} ${solutionIndex} ${
-      lost ? 'X' : guesses.length
-    }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}\n\n` +
-      generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode))
-  )
+): Promise<Boolean> => {
+  let shareText = `${GAME_TITLE} ${solutionIndex} ${
+          lost ? 'X' : guesses.length
+      }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}\n\n` +
+      generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode));
+
+  if (navigator.share) {
+    try {
+      await navigator
+          .share({text : shareText});
+      return false;
+    } catch (error) {
+      await navigator.clipboard.writeText(shareText);
+      return true;
+    }
+  } else {
+    await navigator.clipboard.writeText(shareText);
+    return true;
+  }
+
 }
 
 export const generateEmojiGrid = (guesses: string[], tiles: string[]) => {
