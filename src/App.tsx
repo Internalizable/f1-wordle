@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react'
 import { Grid } from './components/grid/Grid'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
+import { ChangelogModal } from './components/modals/ChangelogModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
 import {
   WIN_MESSAGES,
   GAME_COPIED_MESSAGE,
   NOT_ENOUGH_LETTERS_MESSAGE,
+  WORD_ALREADY_GUESSED_MESSAGE,
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
   HARD_MODE_ALERT_MESSAGE,
@@ -50,6 +52,7 @@ function App() {
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
+  const [isChangelogModalOpen, setIsChangelogModalOpen] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
@@ -58,8 +61,6 @@ function App() {
     localStorage.getItem('theme')
       ? localStorage.getItem('theme') === 'dark'
       : prefersDarkMode
-      ? true
-      : false
   )
   const [isHighContrastMode, setIsHighContrastMode] = useState(
     getStoredIsHighContrastMode()
@@ -196,6 +197,13 @@ function App() {
       })
     }
 
+    if (guesses.includes(currentGuess)) {
+      setCurrentRowClass('jiggle')
+      return showErrorAlert(WORD_ALREADY_GUESSED_MESSAGE, {
+        onClose: clearCurrentRowClass,
+      })
+    }
+
     // enforce hard mode - all guesses must contain all previously revealed letters
     if (isHardMode) {
       const firstMissingReveal = findFirstUnusedReveal(currentGuess, guesses)
@@ -244,6 +252,7 @@ function App() {
     <div className="h-screen flex flex-col">
       <Navbar
         setIsInfoModalOpen={setIsInfoModalOpen}
+        setIsChangelogModalOpen={setIsChangelogModalOpen}
         setIsStatsModalOpen={setIsStatsModalOpen}
         setIsSettingsModalOpen={setIsSettingsModalOpen}
       />
@@ -266,6 +275,10 @@ function App() {
         <InfoModal
           isOpen={isInfoModalOpen}
           handleClose={() => setIsInfoModalOpen(false)}
+        />
+        <ChangelogModal
+          isOpen={isChangelogModalOpen}
+          handleClose={() => setIsChangelogModalOpen(false)}
         />
         <StatsModal
           isOpen={isStatsModalOpen}

@@ -11,9 +11,9 @@ export const shareStatus = async (
   isHighContrastMode: boolean
 ): Promise<Boolean> => {
   let shareText = `${GAME_TITLE} ${solutionIndex} ${
-          lost ? 'X' : guesses.length
-      }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}\n\n` +
-      generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode));
+          lost ? '❌' : (guesses.length + '/' + MAX_CHALLENGES)
+      } ${isHardMode ? '*' : ''}\n\n` +
+      generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode)) + `\n\n#F1Wordle`;
 
   if (navigator.share) {
     try {
