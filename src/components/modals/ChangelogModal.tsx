@@ -46,6 +46,64 @@ export const ChangelogModal = ({ isOpen, handleClose }: Props) => {
                <Cell
                   isRevealing={true}
                   isCompleted={true}
+                  value="5"
+                  status="correct"
+               />
+               <Cell
+                  isRevealing={true}
+                  isCompleted={true}
+                  value="/"
+                  status="present"
+               />
+               <Cell
+                  isRevealing={true}
+                  isCompleted={true}
+                  value="2"
+                  status="correct"
+               />
+               <Cell
+                  isRevealing={true}
+                  isCompleted={true}
+                  value="2"
+                  status="correct"
+               />
+           </div>
+
+           <div className="block mt-3 mb-10 justify-center text-gray-500 dark:text-gray-300">
+               <p className="text-sm mt-3">
+                   <PencilIcon className="h-5 w-5 inline-flex align-bottom"/> {' '}
+                   Multiple word lengths are now supported!
+               </p>
+           </div>
+
+           <div className="flex justify-center mb-1 mt-4">
+               <Cell
+                  isRevealing={true}
+                  isCompleted={true}
+                  value="0"
+                  status="correct"
+               />
+               <Cell
+                  isRevealing={true}
+                  isCompleted={true}
+                  value="3"
+                  status="correct"
+               />
+               <Cell
+                  isRevealing={true}
+                  isCompleted={true}
+                  value="/"
+                  status="present"
+               />
+               <Cell
+                  isRevealing={true}
+                  isCompleted={true}
+                  value="0"
+                  status="correct"
+               />
+               <Cell
+                  isRevealing={true}
+                  isCompleted={true}
                   value="3"
                   status="correct"
                />
