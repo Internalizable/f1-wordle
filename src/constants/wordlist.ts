@@ -52,6 +52,8 @@ export const WORDS = [
     'motor',
     'sport',
     'cycle',
+    'bottas',
+    'pouhon',
     'softs',
     'hards',
     'slick',
