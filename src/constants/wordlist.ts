@@ -4,7 +4,7 @@ export const WORDS = [
     'fduct',
     'perez',
     'vettel',
-    'totto',
+    'toto',
     'max',
     'masi',
     'lewis',
