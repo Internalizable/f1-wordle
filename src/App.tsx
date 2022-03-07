@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Grid } from './components/grid/Grid'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
-import { ChangelogModal } from './components/modals/ChangelogModal'
+import { LoginModal } from './components/modals/LoginModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
 import {
@@ -65,6 +66,10 @@ function App() {
   const [isHighContrastMode, setIsHighContrastMode] = useState(
     getStoredIsHighContrastMode()
   )
+  const [searchParams, setSearchParams] = useSearchParams()
+  console.log(searchParams.get('__firebase_request_key'))
+  console.log(searchParams.get('gameId'))
+
   const [isRevealing, setIsRevealing] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
@@ -276,9 +281,10 @@ function App() {
           isOpen={isInfoModalOpen}
           handleClose={() => setIsInfoModalOpen(false)}
         />
-        <ChangelogModal
+        <LoginModal
           isOpen={isChangelogModalOpen}
           handleClose={() => setIsChangelogModalOpen(false)}
+          isHighContrastMode={isHighContrastMode}
         />
         <StatsModal
           isOpen={isStatsModalOpen}
@@ -291,6 +297,7 @@ function App() {
           isHardMode={isHardMode}
           isDarkMode={isDarkMode}
           isHighContrastMode={isHighContrastMode}
+          numberOfGuessesMade={guesses.length}
         />
         <SettingsModal
           isOpen={isSettingsModalOpen}

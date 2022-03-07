@@ -6,6 +6,8 @@ export const WORDS = [
     'vettel',
     'toto',
     'max',
+    'haas',
+    'bwoah',
     'masi',
     'lewis',
     'george',
@@ -194,7 +196,6 @@ export const WORDS = [
     'diniz',
     'newey',
     'rosso',
-    'bwoah',
     'sutil',
     'buemi',
     'multi'

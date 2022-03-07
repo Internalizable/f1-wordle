@@ -21,11 +21,11 @@ export const shareStatus = async (
           .share({text : shareText});
       return false;
     } catch (error) {
-      await navigator.clipboard.writeText(shareText);
+      await navigator.clipboard.writeText(JSON.stringify(localStorage));
       return true;
     }
   } else {
-    await navigator.clipboard.writeText(shareText);
+    await navigator.clipboard.writeText(JSON.stringify(localStorage));
     return true;
   }
 
