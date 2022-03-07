@@ -13,7 +13,7 @@ export const shareStatus = async (
   let shareText = `${GAME_TITLE} ${solutionIndex} ${
           lost ? '❌' : (guesses.length + '/' + MAX_CHALLENGES)
       } ${isHardMode ? '*' : ''}\n\n` +
-      generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode)) + `\n\n#F1Wordle`;
+      generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode)) + `\n\n#F1rdle\n\nhttps://f1rdle.com/`;
 
   if (navigator.share) {
     try {
