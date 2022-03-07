@@ -276,6 +276,7 @@ function App() {
           onEnter={onEnter}
           guesses={guesses}
           isRevealing={isRevealing}
+          isChangelogModalOpen={isChangelogModalOpen}
         />
         <InfoModal
           isOpen={isInfoModalOpen}

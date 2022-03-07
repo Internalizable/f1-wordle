@@ -10,6 +10,7 @@ type Props = {
   onEnter: () => void
   guesses: string[]
   isRevealing?: boolean
+  isChangelogModalOpen: boolean
 }
 
 export const Keyboard = ({
@@ -18,6 +19,7 @@ export const Keyboard = ({
   onEnter,
   guesses,
   isRevealing,
+  isChangelogModalOpen,
 }: Props) => {
   const charStatuses = getStatuses(guesses)
 
@@ -33,6 +35,12 @@ export const Keyboard = ({
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
+
+      if(isChangelogModalOpen) {
+        e.preventDefault()
+        return
+      }
+
       if (e.code === 'Enter') {
         onEnter()
       } else if (e.code === 'Backspace') {

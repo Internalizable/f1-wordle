@@ -55,6 +55,7 @@ export const LoginModal = ({ isOpen, handleClose, isHighContrastMode }: Props) =
                    <div className="mb-4">
                        <button
                           className={buttonClass}
+                          autoFocus
                           type="button">
                            Sign In
                        </button>
