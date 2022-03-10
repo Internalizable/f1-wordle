@@ -16,7 +16,7 @@ export const WORDS = [
     'spain',
     'italy',
     'qatar',
-    'lowes',
+    'loews',
     'stowe',
     'abbey',
     'senna',
@@ -199,6 +199,8 @@ export const WORDS = [
     'rosso',
     'sutil',
     'buemi',
+    'alesi',
+    'kvyat',
     'multi'
 ]
 
