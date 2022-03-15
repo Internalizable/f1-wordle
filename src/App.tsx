@@ -43,6 +43,9 @@ import { AlertContainer } from './components/alerts/AlertContainer'
 import { useAlert } from './context/AlertContext'
 import { Navbar } from './components/navbar/Navbar'
 
+import { defaultPosition, emojisplosion, emojisplosions } from 'emojisplosion'
+import { EMOJI_MAPPINGS } from './constants/emojis'
+
 function App() {
   const prefersDarkMode = window.matchMedia(
     '(prefers-color-scheme: dark)'
@@ -57,6 +60,7 @@ function App() {
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
+
   const [isGameLost, setIsGameLost] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem('theme')
@@ -66,9 +70,10 @@ function App() {
   const [isHighContrastMode, setIsHighContrastMode] = useState(
     getStoredIsHighContrastMode()
   )
-  const [searchParams, setSearchParams] = useSearchParams()
-  console.log(searchParams.get('__firebase_request_key'))
-  console.log(searchParams.get('gameId'))
+
+  //const [searchParams, setSearchParams] = useSearchParams()
+  //console.log(searchParams.get('__firebase_request_key'))
+  //console.log(searchParams.get('gameId'))
 
   const [isRevealing, setIsRevealing] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
@@ -220,14 +225,36 @@ function App() {
       }
     }
 
+    const winningWord = isWinningWord(currentGuess)
+
     setIsRevealing(true)
-    // turn this back off after all
-    // chars have been revealed
+
     setTimeout(() => {
       setIsRevealing(false)
-    }, REVEAL_TIME_MS * MAX_WORD_LENGTH)
 
-    const winningWord = isWinningWord(currentGuess)
+      if (winningWord && EMOJI_MAPPINGS.has(currentGuess.toLowerCase())) {
+        let element = Array.from(document.querySelectorAll('.guess-row')).pop()
+
+        console.log(element)
+
+        emojisplosion({
+          emojiCount: () => 30,
+          emojis: EMOJI_MAPPINGS.get(currentGuess.toLowerCase()),
+          position() {
+            if (element != undefined) {
+              const offset = cumulativeOffset(element)
+
+              return {
+                x: offset.left + element.clientWidth / 2,
+                y: offset.top + element.clientHeight / 2,
+              }
+            }
+
+            return defaultPosition()
+          },
+        })
+      }
+    }, REVEAL_TIME_MS * MAX_WORD_LENGTH)
 
     if (
       unicodeLength(currentGuess) === MAX_WORD_LENGTH &&
@@ -262,7 +289,7 @@ function App() {
         setIsSettingsModalOpen={setIsSettingsModalOpen}
       />
       <div className="mt-4 h-screen flex flex-col">
-        <div className="pb-6">
+        <div id="grid" className="pb-6">
           <Grid
             guesses={guesses}
             currentGuess={currentGuess}
@@ -317,3 +344,18 @@ function App() {
 }
 
 export default App
+
+var cumulativeOffset = function (element: any) {
+  var top = 0,
+    left = 0
+  do {
+    top += element.offsetTop || 0
+    left += element.offsetLeft || 0
+    element = element.offsetParent
+  } while (element)
+
+  return {
+    top: top,
+    left: left,
+  }
+}

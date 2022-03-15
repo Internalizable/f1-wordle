@@ -14,7 +14,7 @@ export const WORDS = [
     'yuki',
     'korea',
     'race',
-    'week',
+    'paddock',
     'practice',
     'quali',
     'bahrain',
