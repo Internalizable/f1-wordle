@@ -11,6 +11,7 @@ import {
   NEW_WORD_TEXT,
   SHARE_TEXT,
 } from '../../constants/strings'
+import GoogleAd from "../../context/GoogleAd";
 
 type Props = {
   isOpen: boolean
@@ -95,6 +96,8 @@ export const StatsModal = ({
           </button>
         </div>
       )}
+
+      <GoogleAd slot="5889569009" classNames="mt-3" timeout={200}/>
     </BaseModal>
   )
 }
