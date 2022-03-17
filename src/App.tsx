@@ -45,6 +45,7 @@ import { Navbar } from './components/navbar/Navbar'
 
 import { defaultPosition, emojisplosion, emojisplosions } from 'emojisplosion'
 import { EMOJI_MAPPINGS } from './constants/emojis'
+import GoogleAd from './context/GoogleAd'
 
 function App() {
   const prefersDarkMode = window.matchMedia(
@@ -339,6 +340,7 @@ function App() {
         />
         <AlertContainer />
       </div>
+      <GoogleAd slot="5889569009" classNames="" timeout={200} />
     </div>
   )
 }
