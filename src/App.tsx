@@ -340,7 +340,6 @@ function App() {
         />
         <AlertContainer />
       </div>
-      <GoogleAd slot="5889569009" classNames="" timeout={200} />
     </div>
   )
 }
