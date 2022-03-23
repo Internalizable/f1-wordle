@@ -31,10 +31,13 @@ import {
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
+  GameStats,
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
   setStoredIsHighContrastMode,
   getStoredIsHighContrastMode,
+  loadStatsFromLocalStorage,
+  clearLocalStorage,
 } from './lib/localStorage'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 

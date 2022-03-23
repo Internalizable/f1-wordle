@@ -36,12 +36,17 @@ export const addStatsForCompletedGame = (
 }
 
 const defaultStats: GameStats = {
-  winDistribution: Array.from(new Array(MAX_CHALLENGES), () => 0),
+  winDistribution: Array.from(new Array(MAX_CHALLENGES), (x, i) => {
+    if(i == 0)
+      return 10
+    else
+      return 0
+  }),
   gamesFailed: 0,
-  currentStreak: 0,
-  bestStreak: 0,
-  totalGames: 0,
-  successRate: 0,
+  currentStreak: 10,
+  bestStreak: 10,
+  totalGames: 10,
+  successRate: 100,
 }
 
 export const loadStats = () => {
