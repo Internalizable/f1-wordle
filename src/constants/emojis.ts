@@ -1,6 +1,6 @@
 export const EMOJI_MAPPINGS: any = new Map([
    ['bahrain', ['🇧🇭']],
-   ['saudi', ['🇸🇦']],
+   ['saudi', ['💣', '🚀', '💥']],
    ['australia', ['']],
    ['marino', ['']],
    ['miami', ['']],

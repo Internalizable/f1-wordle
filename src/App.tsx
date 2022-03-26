@@ -242,7 +242,7 @@ function App() {
         console.log(element)
 
         emojisplosion({
-          emojiCount: () => 30,
+          emojiCount: () => 15,
           emojis: EMOJI_MAPPINGS.get(currentGuess.toLowerCase()),
           position() {
             if (element != undefined) {
